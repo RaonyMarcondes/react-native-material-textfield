@@ -76,6 +76,8 @@ export default class Label extends PureComponent {
       errorColor,
       baseColor,
       tintColor,
+      active,
+      focused,
       ...props
     } = this.props;
 
@@ -101,6 +103,7 @@ export default class Label extends PureComponent {
       }),
 
       color,
+      fontFamily: (active || focused) ? 'Avenir-Heavy':  'Avenir-Roman',
     };
 
     let containerStyle = {
