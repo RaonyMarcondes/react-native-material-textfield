@@ -1,6 +1,6 @@
 {
   "name": "react-native-material-textfield",
-  "version": "0.5.4",
+  "version": "0.6.1",
   "license": "BSD-3-Clause",
   "author": "Alexander Nazarov <n4kz@n4kz.com>",
 
@@ -27,6 +27,10 @@
     "url": "git://github.com/n4kz/react-native-material-textfield.git"
   },
 
+  "dependencies": {
+    "prop-types": "^15.5.9"
+  },
+
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
@@ -34,15 +38,23 @@
 
   "devDependencies": {
     "babel-eslint": "^7.2.0",
+    "babel-jest": "^20.0.3",
+    "babel-preset-react-native": "2.0.0",
     "eslint": "^3.18.0",
-    "eslint-plugin-react": "^7.0.0"
+    "eslint-plugin-react": "^7.0.0",
+    "jest": "^20.0.4",
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.45.1",
+    "react-test-renderer": "16.0.0-alpha.12"
   },
 
   "scripts": {
-    "lint": "node_modules/.bin/eslint src example/app.js"
+    "test": "npm run jest -- --silent",
+    "lint": "eslint src example/app.js",
+    "jest": "jest"
   },
 
-  "dependencies": {
-    "prop-types": "^15.5.9"
+  "jest": {
+    "preset": "react-native"
   }
 }
