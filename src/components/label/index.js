@@ -18,14 +18,18 @@ export default class Label extends PureComponent {
     errored: PropTypes.bool,
     restricted: PropTypes.bool,
 
+    baseSize: PropTypes.number.isRequired,
     fontSize: PropTypes.number.isRequired,
     activeFontSize: PropTypes.number.isRequired,
+    basePadding: PropTypes.number.isRequired,
 
     tintColor: PropTypes.string.isRequired,
     baseColor: PropTypes.string.isRequired,
     errorColor: PropTypes.string.isRequired,
 
     animationDuration: PropTypes.number.isRequired,
+
+    style: Animated.Text.propTypes.style,
 
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
@@ -79,6 +83,9 @@ export default class Label extends PureComponent {
       tintColor,
       active,
       focused,
+      baseSize,
+      basePadding,
+      style,
       ...props
     } = this.props;
 
@@ -92,8 +99,8 @@ export default class Label extends PureComponent {
     let top = input.interpolate({
       inputRange: [0, 1],
       outputRange: [
-        32 + fontSize * 0.25,
-        32 - fontSize * 0.25 - activeFontSize,
+        baseSize + fontSize * 0.25,
+        baseSize - basePadding - activeFontSize,
       ],
     });
 
@@ -114,7 +121,9 @@ export default class Label extends PureComponent {
 
     return (
       <Animated.View style={containerStyle}>
-        <Animated.Text style={textStyle} {...props}>{children}</Animated.Text>
+        <Animated.Text style={[style, textStyle]} {...props}>
+          {children}
+        </Animated.Text>
       </Animated.View>
     );
   }
