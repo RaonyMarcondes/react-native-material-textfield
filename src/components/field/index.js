@@ -367,7 +367,7 @@ export default class TextField extends PureComponent {
         { borderBottomColor, borderBottomWidth }),
 
       ...(props.multiline?
-        { height: labelHeight + inputContainerPadding + height }:
+        { height: labelHeight + inputContainerPadding + height - 3 }:
         { height: labelHeight + inputContainerPadding + fontSize * 1.5 }),
     };
 
